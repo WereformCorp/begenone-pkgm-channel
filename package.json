@@ -1,0 +1,10 @@
+{
+  "name": "@begenone/pkgm-channel",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "private": true,
+  "peerDependencies": {
+    "react": "^19.1.0",
+    "react-native": "^0.81.5"
+  }
+}
