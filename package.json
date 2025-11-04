@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "private": true,
   "peerDependencies": {
-    "react": "^19.1.0",
-    "react-native": "^0.81.5"
+    "react": "19.1.1",
+    "react-native": "^0.81.4"
   }
 }
