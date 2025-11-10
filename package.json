@@ -5,5 +5,9 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
+  },
+  "dependencies": {
+    "@begenone/pkgm-shared": "workspace:*",
+    "@expo/vector-icons": "^15.0.3"
   }
 }

@@ -5,7 +5,8 @@ export const globalStyles = {
     colorPrimary300: "#3C3C3C",
     colorPrimary400: "#7F7F7F",
     colorPrimary500: "#D3D3D3",
-    colorPrimary600: "#FF8800",
+    colorPrimary600: "#ff6600ff",
+    colorPrimary700: "#FF8800",
   },
   borders: {
     borderPrimary50: 8,

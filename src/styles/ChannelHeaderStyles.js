@@ -2,12 +2,14 @@ import { StyleSheet } from "react-native";
 import { globalStyles } from "./globalStyles";
 
 export const ChannelHeaderStyles = StyleSheet.create({
-  container: {
+  primaryContainer: {
     flexDirection: "row",
     alignItems: "flex-end",
     justifyContent: "center",
     alignSelf: "flex-start",
     paddingLeft: 24,
+    marginTop: -24,
+    // transform: [{ translateY: -32 }],
   },
 
   imageContainer: {
@@ -18,7 +20,7 @@ export const ChannelHeaderStyles = StyleSheet.create({
 
   image: {
     aspectRatio: 1 / 1,
-    borderRadius: 10,
+    borderRadius: 2,
   },
 
   textContainer: {
@@ -39,5 +41,21 @@ export const ChannelHeaderStyles = StyleSheet.create({
 
   subCountText: {
     color: globalStyles.colors.colorPrimary600,
+  },
+
+  miniAbout: {
+    color: "#fff",
+    padding: 24,
+    paddingLeft: 32,
+    paddingRight: 32,
+    paddingTop: 12,
+    fontSize: 12,
+    lineHeight: 18,
+  },
+
+  customizedButton: {
+    backgroundColor: "#ff4800",
+    borderRadius: 30,
+    height: 35,
   },
 });
