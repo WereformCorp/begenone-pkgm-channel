@@ -8,7 +8,7 @@ import {
 import { ChannelNavigationStyles } from "../styles/ChannelNavigationStyles";
 import { useState } from "react";
 
-export function ChannelNavigation() {
+export function ChannelNavigation({ style }) {
   const [selected, setSelected] = useState("Home");
 
   const tabs = ["Home", "Videos", "Wires", "Playlist", "About"];
@@ -17,7 +17,7 @@ export function ChannelNavigation() {
     <ScrollView
       horizontal={true}
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={ChannelNavigationStyles.container}
+      contentContainerStyle={[ChannelNavigationStyles.container, style]}
     >
       {tabs.map(tab => (
         <TouchableOpacity
