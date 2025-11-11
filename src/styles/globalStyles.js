@@ -8,7 +8,7 @@ export const globalStyles = StyleSheet.create({
     colorPrimary200: "#252525",
 
     colorPrimary300: "#3C3C3C",
-    colorPrimary350: "rgba(60,60,60,.5)",
+    colorPrimary350: "rgba(60,60,60,.2)",
 
     colorPrimary400: "#7F7F7F",
 
