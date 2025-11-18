@@ -11,9 +11,11 @@ export function ChannelHomeLayout({
 }) {
   return (
     <View>
+      <ChannelHeader />
+      <ChannelNavigation />
       <Text
         style={{
-          color: "#fff",
+          color: "rgb(255, 255, 255)",
           fontWeight: 900,
           fontSize: 24,
           paddingLeft: 12,
