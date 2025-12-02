@@ -4,15 +4,23 @@ import { ChannelNavigation } from "../../components/ChannelNavigation";
 
 export function ChannelHomeLayout({
   children,
-  style,
+  channelNavStyles,
   channelLogoUri,
   channelUserName,
   channelHeaderSubsCountText,
+  bannerUri,
+  miniAboutText,
 }) {
   return (
     <View>
-      <ChannelHeader />
-      <ChannelNavigation />
+      <ChannelHeader
+        channelLogoUri={channelLogoUri}
+        channelUserName={channelUserName}
+        channelHeaderSubsCountText={channelHeaderSubsCountText}
+        bannerUri={bannerUri}
+        miniAboutText={miniAboutText}
+      />
+      <ChannelNavigation style={channelNavStyles} />
       <Text
         style={{
           color: "rgb(255, 255, 255)",
