@@ -6,12 +6,24 @@ import {
   View,
 } from "react-native";
 import { ChannelNavigationStyles } from "../styles/ChannelNavigationStyles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export function ChannelNavigation({ style }) {
+export function ChannelNavigation({ style, selectContentType }) {
   const [selected, setSelected] = useState("Home");
 
-  const tabs = ["Home", "Videos", "Wires", "Playlist", "About"];
+  const tabs = [
+    "Home",
+    "Videos",
+    "Wires",
+    // "Playlist",
+    "About",
+  ];
+
+  useEffect(() => {
+    console.log(`Selected Tab: `, selected);
+
+    selectContentType(selected);
+  }, [selected]);
 
   return (
     <ScrollView
