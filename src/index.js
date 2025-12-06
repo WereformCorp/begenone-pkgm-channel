@@ -1,4 +1,3 @@
-export { default as HelloShared } from "./HelloShared";
 export { ChannelHeader } from "./components/ChannelHeader";
 export { ChannelNavigation } from "./components/ChannelNavigation";
 export { ChannelHomeLayout } from "./layouts/home/ChannelHomeLayout";

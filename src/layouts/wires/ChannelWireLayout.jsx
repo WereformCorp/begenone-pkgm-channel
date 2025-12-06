@@ -1,4 +1,4 @@
-import { ScrollView, View } from "react-native";
+import { ScrollView } from "react-native";
 
 export function ChannelWireLayout({ children }) {
   return <ScrollView>{children}</ScrollView>;

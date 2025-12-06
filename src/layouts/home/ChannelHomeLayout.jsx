@@ -1,6 +1,4 @@
 import { ScrollView, Text, View } from "react-native";
-import { ChannelHeader } from "../../components/ChannelHeader";
-import { ChannelNavigation } from "../../components/ChannelNavigation";
 import { useState } from "react";
 
 export function ChannelHomeLayout({ children }) {
