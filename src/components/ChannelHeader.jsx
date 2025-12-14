@@ -2,12 +2,12 @@ import { Text, TouchableOpacity } from "react-native";
 import { View, Image } from "react-native";
 import { useWindowDimensions } from "react-native";
 import { ChannelHeaderStyles } from "../styles/ChannelHeaderStyles";
-import { CustomizedButton } from "@begenone/pkgm-shared";
+import { CustomizedButton } from "@wereform/pkgm-shared";
 import { Ionicons } from "@expo/vector-icons";
 
 export function ChannelHeader({
   channelLogoUri,
-  ChannelUserName,
+  ChannelName,
   channelHeaderSubsCountText,
   bannerUri,
   miniAboutText,
@@ -52,7 +52,7 @@ export function ChannelHeader({
         </View>
         <View style={ChannelHeaderStyles.textContainer}>
           <Text style={ChannelHeaderStyles.userNameText}>
-            {ChannelUserName || "Default Username"}
+            {ChannelName || "Default Username"}
           </Text>
           <Text style={ChannelHeaderStyles.subscribersContainer}>
             <Text style={ChannelHeaderStyles.subCountText}>

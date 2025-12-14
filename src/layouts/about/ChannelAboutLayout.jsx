@@ -1,7 +1,7 @@
 import { Image, Linking, Text, TouchableOpacity, View } from "react-native";
 import { ChannelAboutLayoutStyles } from "../../styles/ChannelAboutLayoutStyles";
 import { Ionicons } from "@expo/vector-icons";
-import { normalizeUrl } from "@begenone/pkgm-shared";
+import { normalizeUrl } from "@wereform/pkgm-shared";
 
 export function ChannelAboutLayout({
   content,

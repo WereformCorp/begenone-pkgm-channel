@@ -1,17 +1,19 @@
 {
-  "name": "@begenone/pkgm-channel",
-  "version": "1.0.0",
-  "private": true,
-  "main": "src/index.js",
+  "name": "@wereform/pkgm-channel",
+  "version": "1.0.1",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel src --out-dir dist --extensions .js,.jsx"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
   },
   "dependencies": {
-    "@begenone/pkgm-shared": "workspace:*",
+    "@wereform/pkgm-shared": "^1.0.0",
     "@expo/vector-icons": "^15.0.3"
   },
   "devDependencies": {
