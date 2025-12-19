@@ -1,6 +1,6 @@
 {
   "name": "@wereform/pkgm-channel",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "files": [
     "dist",
@@ -17,7 +17,7 @@
     "react-native": "*"
   },
   "dependencies": {
-    "@wereform/pkgm-shared": "workspace:*",
+    "@wereform/pkgm-shared": "^1.0.2",
     "@expo/vector-icons": "^15.0.3"
   },
   "devDependencies": {
