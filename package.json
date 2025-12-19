@@ -1,7 +1,11 @@
 {
   "name": "@wereform/pkgm-channel",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "babel src --out-dir dist --extensions .js,.jsx"
   },
@@ -13,7 +17,7 @@
     "react-native": "*"
   },
   "dependencies": {
-    "@wereform/pkgm-shared": "^1.0.0",
+    "@wereform/pkgm-shared": "workspace:*",
     "@expo/vector-icons": "^15.0.3"
   },
   "devDependencies": {
