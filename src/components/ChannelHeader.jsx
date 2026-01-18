@@ -74,7 +74,7 @@ export function ChannelHeader({
           justifyContent: "center",
         }}
       >
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={{ maxWidth: "70%", width: "100%", marginRight: 12 }}
         >
           <CustomizedButton
@@ -90,7 +90,7 @@ export function ChannelHeader({
             size={36}
             color="white"
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
