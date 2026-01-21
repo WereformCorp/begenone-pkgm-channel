@@ -5,6 +5,39 @@ import { ChannelHeaderStyles } from "../styles/ChannelHeaderStyles";
 import { CustomizedButton } from "@wereform/pkgm-shared";
 import { Ionicons } from "@expo/vector-icons";
 
+/**
+ * ChannelHeader
+ *
+ * Top-level visual header for a public channel page.
+ *
+ * Responsibilities:
+ * - Renders the channel banner image
+ * - Displays channel logo, name, and subscriber count
+ * - Shows a short “about” preview for the channel
+ * - Adapts logo sizing dynamically based on screen dimensions
+ *
+ * Props:
+ * - channelLogoUri: string (URL)
+ *   URL of the channel’s profile image.
+ *
+ * - ChannelName: string
+ *   Display name of the channel.
+ *
+ * - channelHeaderSubsCountText: string | number
+ *   Subscriber count shown under the channel name.
+ *
+ * - bannerUri: string (URL)
+ *   URL of the channel banner image.
+ *
+ * - miniAboutText: string
+ *   Short description of the channel (clamped to two lines).
+ *
+ * Notes:
+ * - Uses `useWindowDimensions` to keep logo sizing responsive
+ * - Fallback images are provided for both banner and profile logo
+ * - Subscribe / notification actions are scaffolded but currently disabled
+ */
+
 export function ChannelHeader({
   channelLogoUri,
   ChannelName,
