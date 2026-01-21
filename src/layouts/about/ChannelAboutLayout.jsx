@@ -3,6 +3,47 @@ import { ChannelAboutLayoutStyles } from "../../styles/ChannelAboutLayoutStyles"
 import { Ionicons } from "@expo/vector-icons";
 import { normalizeUrl } from "@wereform/pkgm-shared";
 
+/**
+ * ChannelAboutLayout
+ *
+ * Renders the “About” section of a channel profile.
+ *
+ * Responsibilities:
+ * - Displays channel logo, name, and short subtitle
+ * - Renders long-form about content with preserved line breaks
+ * - Shows external social media links with icons
+ * - Gracefully handles empty or missing content
+ *
+ * Props:
+ * - content: string
+ *   Full “about” text shown in the body section.
+ *
+ * - channelLogoUri: string (URL)
+ *   Channel profile image.
+ *
+ * - aboutName: string
+ *   Display name shown in the about header.
+ *
+ * - aboutSubtitle: string
+ *   Short subtitle under the channel name (auto-clamped).
+ *
+ * - socialMediaLink1 / socialMediaLink2: string
+ *   External URLs for social profiles.
+ *
+ * - socialIcon1 / socialIcon2: Ionicons name
+ *   Icons used for social links.
+ *
+ * Behavior:
+ * - Empty content is replaced with clear placeholder text
+ * - Subtitle length is clamped to avoid layout overflow
+ * - URLs are normalized before opening to prevent malformed links
+ * - Line breaks in content are preserved for readability
+ *
+ * Notes:
+ * - Placeholder defaults are intended for development only
+ * - Uses `Linking.openURL` for external navigation
+ */
+
 export function ChannelAboutLayout({
   content,
   channelLogoUri,
