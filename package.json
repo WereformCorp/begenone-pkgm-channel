@@ -1,9 +1,9 @@
 {
   "name": "@wereform/pkgm-channel",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "source": "dist/index.js",
   "main": "dist/index.js",
-  "react-native": "src/index.js",
+  "react-native": "dist/index.js",
   "files": [
     "dist",
     "src",
@@ -11,7 +11,9 @@
   ],
   "scripts": {
     "build": "babel src --out-dir dist --extensions .js,.jsx",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run build",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "publishConfig": {
     "access": "public"
@@ -21,8 +23,11 @@
     "react-native": "*"
   },
   "dependencies": {
-    "@wereform/pkgm-shared": "^1.0.2",
-    "@expo/vector-icons": "^15.0.3"
+    "@wereform/pkgm-shared": "^1.0.4",
+    "@expo/vector-icons": "^15.0.3",
+    "expo": "~54.0.30",
+    "react": "19.1.0",
+    "react-native": "0.81.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.3",
