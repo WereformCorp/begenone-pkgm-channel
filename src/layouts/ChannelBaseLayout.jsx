@@ -1,63 +1,41 @@
 import { ScrollView, View } from "react-native";
 import { ChannelHeader } from "../components/ChannelHeader";
 import { ChannelNavigation } from "../components/ChannelNavigation";
+import { COLORS } from "../styles/channelTheme";
+
+const DEFAULT_AVATAR =
+  "https://begenone-images.s3.us-east-1.amazonaws.com/default-user-photo.jpg";
 
 /**
  * ChannelBaseLayout
  *
- * Base layout wrapper for a public channel page.
- *
- * Responsibilities:
- * - Composes the core channel UI structure
- * - Renders the channel header (banner, logo, name, subscribers)
- * - Renders the channel navigation tabs
- * - Acts as a scrollable container for channel content
- *
- * Props:
- * - channelLogoUri: string (URL)
- *   Logo image for the channel header.
- *
- * - channelUserName: string
- *   Display name of the channel owner.
- *
- * - channelHeaderSubsCountText: string
- *   Subscriber count shown in the header.
- *
- * - children: ReactNode
- *   Channel-specific content (Home, Videos, Wires, About, etc.).
- *
- * - style: object
- *   Optional styles passed down to ChannelNavigation.
- *
- * Behavior:
- * - Provides safe fallback values for missing channel data
- * - Uses a vertical ScrollView to allow full-page scrolling
- * - Keeps header and navigation fixed in logical order
- *
- * Notes:
- * - This component is intentionally “dumb”
- * - Content switching is handled by children + navigation callbacks
+ * BEGENONE-styled base layout for channel pages.
+ * Header, navigation tabs, scrollable content area.
  */
 
 export function ChannelBaseLayout({
   channelLogoUri,
   channelUserName,
   channelHeaderSubsCountText,
+  bannerUri,
+  miniAboutText,
   children,
   style,
 }) {
   return (
-    <ScrollView style={{ flexDirection: "column" }}>
+    <ScrollView
+      style={{ flex: 1, backgroundColor: COLORS.bgBase }}
+      contentContainerStyle={{ paddingBottom: 96 }}
+    >
       <ChannelHeader
-        channelLogoUri={
-          channelLogoUri ||
-          "https://begenone-images.s3.us-east-1.amazonaws.com/default-user-photo.jpg"
-        }
-        ChannelUserName={channelUserName || "Areesh Alam"}
-        channelHeaderSubsCountText={channelHeaderSubsCountText || "542,000"}
+        channelLogoUri={channelLogoUri || DEFAULT_AVATAR}
+        ChannelName={channelUserName || "Channel"}
+        channelHeaderSubsCountText={channelHeaderSubsCountText}
+        bannerUri={bannerUri}
+        miniAboutText={miniAboutText}
       />
       <ChannelNavigation style={style} />
-      <View>{children}</View>
+      <View style={{ paddingHorizontal: 12 }}>{children}</View>
     </ScrollView>
   );
 }

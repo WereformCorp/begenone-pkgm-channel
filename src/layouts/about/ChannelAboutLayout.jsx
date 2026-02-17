@@ -1,5 +1,6 @@
-import { Image, Linking, Text, TouchableOpacity, View } from "react-native";
+import { Image, Linking, Text, Pressable, View } from "react-native";
 import { ChannelAboutLayoutStyles } from "../../styles/ChannelAboutLayoutStyles";
+import { COLORS } from "../../styles/channelTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { normalizeUrl } from "@wereform/pkgm-shared";
 
@@ -98,7 +99,7 @@ export function ChannelAboutLayout({
             <Text
               style={[
                 ChannelAboutLayoutStyles.aboutSubstitle,
-                isContentEmpty && { color: "#7f7f7f" },
+                isContentEmpty && ChannelAboutLayoutStyles.aboutTextMuted,
               ]}
             >
               {safeSubtitle}
@@ -106,33 +107,33 @@ export function ChannelAboutLayout({
           </View>
         </View>
         <View style={ChannelAboutLayoutStyles.iconsContainer}>
-          <TouchableOpacity
-            style={ChannelAboutLayoutStyles.icon1}
+          <Pressable
             onPress={() => Linking.openURL(socialMediaLink1Url)}
+            style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]}
           >
             <Ionicons
               name={socialIcon1 || "logo-github"}
               size={24}
-              color="white"
+              color={COLORS.textPrimary}
             />
-          </TouchableOpacity>
-          <TouchableOpacity
-            // style={ChannelAboutLayoutStyles.icons}
+          </Pressable>
+          <Pressable
             onPress={() => Linking.openURL(socialMediaLink2Url)}
+            style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]}
           >
             <Ionicons
               name={socialIcon2 || "logo-linkedin"}
               size={24}
-              color="#0084ff"
+              color={COLORS.accent}
             />
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
       <View>
         <Text
           style={[
             ChannelAboutLayoutStyles.aboutText,
-            isContentEmpty && { color: "#7f7f7f" },
+            isContentEmpty && ChannelAboutLayoutStyles.aboutTextMuted,
           ]}
         >
           {finalText.map((text, index) => (

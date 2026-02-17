@@ -1,77 +1,73 @@
 import { Platform, StyleSheet } from "react-native";
-import { globalStyles } from "./globalStyles";
+import { COLORS } from "./channelTheme";
 
-/* Channel About screen layout and typography */
 export const ChannelAboutLayoutStyles = StyleSheet.create({
   container: {
-    // Main about card container
-    width: "auto",
-    margin: 12,
-    backgroundColor: globalStyles.colors.colorPrimary350,
-    padding: 18,
-    borderRadius: globalStyles.borders.borderPrimary200,
+    marginHorizontal: 12,
     marginBottom: 96,
+    backgroundColor: COLORS.bgRaised,
+    padding: 20,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: COLORS.accentSubtle,
   },
 
   headerContainer: {
-    // Top row with logo, title, and actions
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingBottom: 24,
+    alignItems: "center",
+    paddingBottom: 20,
   },
 
   innerHeaderContainer: {
-    // Left section containing logo and text
-    width: "auto",
     flexDirection: "row",
+    flex: 1,
+    alignItems: "center",
   },
 
   channelLogoUri: {
-    // Channel logo avatar
-    width: "auto",
-    height: 60,
-    aspectRatio: 1 / 1,
-    borderRadius: globalStyles.borders.borderPrimary50,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
   },
 
   aboutDetails: {
-    // Channel name and subtitle stack
+    flex: 1,
     flexDirection: "column",
-    paddingLeft: 18,
+    paddingLeft: 16,
     justifyContent: "center",
   },
 
   aboutName: {
-    // Channel display name
-    color: "#fff",
-    fontWeight: 800,
-    fontSize: 24,
-    paddingBottom: 4,
+    color: COLORS.textPrimary,
+    fontWeight: "700",
+    fontSize: 18,
+    marginBottom: 2,
   },
 
   aboutSubstitle: {
-    // Channel subtitle / handle
-    color: "#fff",
-    fontSize: 12,
-    fontWeight: 600,
+    color: COLORS.textMuted,
+    fontSize: 13,
+    fontWeight: "500",
   },
 
   iconsContainer: {
-    // Action icons column
-    width: "auto",
-    flexDirection: "column",
-    justifyContent: "center",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
   },
 
   icon1: {
-    // Primary action icon spacing
-    paddingBottom: 4,
+    paddingBottom: 0,
   },
 
   aboutText: {
-    // Channel about description text
-    color: "#fff",
-    fontSize: Platform.OS === "ios" ? 16 : 14,
+    color: COLORS.textPrimary,
+    fontSize: Platform.OS === "ios" ? 15 : 14,
     lineHeight: Platform.OS === "ios" ? 24 : 22,
+  },
+
+  aboutTextMuted: {
+    color: COLORS.textMuted,
   },
 });

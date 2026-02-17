@@ -1,71 +1,53 @@
 import {
   ScrollView,
   Text,
-  TouchableOpacity,
-  useWindowDimensions,
+  Pressable,
   View,
 } from "react-native";
-import { ChannelNavigationStyles } from "../styles/ChannelNavigationStyles";
+import { ChannelNavigationStyles as S } from "../styles/ChannelNavigationStyles";
 import { useEffect, useState } from "react";
 
 /**
  * ChannelNavigation
  *
- * Horizontal tab-based navigation for channel content sections.
- *
- * Responsibilities:
- * - Displays selectable tabs for channel sections (Home, Videos, Wires, About)
- * - Tracks the currently selected tab locally
- * - Notifies parent components of tab changes
- *
- * Props:
- * - style: object
- *   Optional style overrides for the navigation container.
- *
- * - selectContentType: function
- *   Callback invoked whenever the active tab changes.
- *   Receives the selected tab label as its argument.
- *
- * Behavior:
- * - Defaults to "Home" on initial render
- * - Uses horizontal ScrollView for overflow-safe navigation
- * - Applies active styling to the selected tab
+ * BEGENONE-styled horizontal tab navigation.
+ * Uses accent for selected tab, Pressable for feedback.
  */
 
 export function ChannelNavigation({ style, selectContentType }) {
   const [selected, setSelected] = useState("Home");
 
-  const tabs = [
-    "Home",
-    "Videos",
-    "Wires",
-    // "Playlist",
-    "About",
-  ];
+  const tabs = ["Home", "Videos", "Wires", "About"];
 
   useEffect(() => {
-    console.log(`Selected Tab: `, selected);
-
-    selectContentType(selected);
+    selectContentType?.(selected);
   }, [selected]);
 
   return (
     <ScrollView
-      horizontal={true}
+      horizontal
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={[ChannelNavigationStyles.container, style]}
+      contentContainerStyle={[S.container, style]}
     >
       {tabs.map(tab => (
-        <TouchableOpacity
+        <Pressable
           key={tab}
           onPress={() => setSelected(tab)}
-          style={[
-            ChannelNavigationStyles.button,
-            selected === tab && ChannelNavigationStyles.selectedButton, // conditional style
+          style={({ pressed }) => [
+            S.button,
+            selected === tab && S.selectedButton,
+            { opacity: pressed ? 0.8 : 1 },
           ]}
         >
-          <Text style={ChannelNavigationStyles.buttonText}>{tab}</Text>
-        </TouchableOpacity>
+          <Text
+            style={[
+              S.buttonText,
+              selected === tab && S.selectedButtonText,
+            ]}
+          >
+            {tab}
+          </Text>
+        </Pressable>
       ))}
     </ScrollView>
   );

@@ -1,0 +1,96 @@
+%% begenone-pkgm-channel — Sequence Diagrams
+%% Mermaid.js format (.mmd) — use --- to separate multiple diagrams
+%% Package is UI-only; data arrives via props from parent (e.g. ChannelBaseScreen)
+
+%% 1. LAYOUT COMPOSITION FLOW (ChannelBaseLayout → Header, Nav, Content)
+sequenceDiagram
+    autonumber
+    participant Parent as Parent / ChannelBaseScreen
+    participant BaseLayout as ChannelBaseLayout
+    participant Header as ChannelHeader
+    participant Nav as ChannelNavigation
+    participant Content as ChannelHomeLayout / VideoLayout / WireLayout / AboutLayout
+
+    Parent->>BaseLayout: props (channelLogoUri, channelUserName, bannerUri, miniAboutText, children)
+    BaseLayout->>Header: render (channelLogoUri, ChannelName, subsCountText, bannerUri, miniAboutText)
+    BaseLayout->>Nav: render (style, selectContentType callback)
+    BaseLayout->>Content: render children in View
+
+    Note over BaseLayout,Content: ScrollView → Header → Nav → {children}
+
+---
+%% 2. TAB SELECTION FLOW (User taps tab → content switches)
+sequenceDiagram
+    autonumber
+    participant User
+    participant Nav as ChannelNavigation
+    participant Parent as Parent (e.g. ChannelBaseScreen)
+    participant Content as Tab layout (Home / Videos / Wires / About)
+
+    User->>Nav: tap tab ("Home" | "Videos" | "Wires" | "About")
+    Nav->>Nav: setSelected(tab)
+    Nav->>Parent: selectContentType(selected)
+    Parent->>Parent: setCurrentTab(normalized)
+    Parent->>Content: re-render with active layout as children
+    Content->>User: display tab content
+
+---
+%% 3. CHANNEL HEADER — SUBSCRIBE & NOTIFICATION FLOW
+sequenceDiagram
+    autonumber
+    participant User
+    participant Header as ChannelHeader
+    participant Modal as Notification Modal
+
+    User->>Header: tap Subscribe
+    Header->>Header: handleSubscribe → setSubscribed(!prev)
+    Header->>Header: animate btnScale
+    Header->>User: show "Subscribed" | "Subscribe"
+
+    opt User subscribed
+        User->>Header: tap Bell
+        Header->>Header: setPopupVisible(true)
+        Header->>Modal: render Modal (visible)
+        User->>Modal: tap "All notifications" | "Mute notifications"
+        Modal->>Header: selectNotif(key)
+        Header->>Header: setNotifMode(key), setPopupVisible(false)
+        Header->>User: close modal
+    end
+
+---
+%% 4. CHANNEL ABOUT LAYOUT — SOCIAL LINK FLOW
+sequenceDiagram
+    autonumber
+    participant User
+    participant AboutLayout as ChannelAboutLayout
+    participant Linking as React Native Linking
+
+    Note over AboutLayout: Props: content, channelLogoUri, aboutName, aboutSubtitle, socialMediaLink1/2, socialIcon1/2
+
+    AboutLayout->>AboutLayout: normalizeUrl(socialMediaLink1/2)
+
+    User->>AboutLayout: tap social icon (e.g. GitHub)
+    AboutLayout->>Linking: openURL(normalizedUrl)
+    Linking->>User: open browser / external app
+
+---
+%% 5. TYPICAL CHANNEL PAGE RENDER FLOW (Parent + pkg-channel)
+sequenceDiagram
+    autonumber
+    participant App as App (ChannelBaseScreen)
+    participant API as pkgm-api (getChannel, getVideo, getWire)
+    participant ChannelPkg as pkgm-channel
+
+    App->>API: getChannel(channelId)
+    API-->>App: channel metadata, videoIds, wireIds
+
+    App->>API: getVideo(id) for each video
+    API-->>App: video data
+
+    App->>API: getWire(id) for each wire
+    API-->>App: wire data
+
+    App->>ChannelPkg: ChannelHeader + ChannelNavigation + Layout
+    Note right of App: Passes channelLogoUri, channelName, bannerUri, etc.
+    ChannelPkg->>ChannelPkg: ChannelBaseLayout composes Header, Nav, content
+    ChannelPkg-->>App: rendered channel UI
