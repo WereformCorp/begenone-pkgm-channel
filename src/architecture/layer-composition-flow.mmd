@@ -1,0 +1,14 @@
+sequenceDiagram
+    autonumber
+    participant Parent as Parent / ChannelBaseScreen
+    participant BaseLayout as ChannelBaseLayout
+    participant Header as ChannelHeader
+    participant Nav as ChannelNavigation
+    participant Content as ChannelHomeLayout / VideoLayout / WireLayout / AboutLayout
+
+    Parent->>BaseLayout: props (channelLogoUri, channelUserName, bannerUri, miniAboutText, children)
+    BaseLayout->>Header: render (channelLogoUri, ChannelName, subsCountText, bannerUri, miniAboutText)
+    BaseLayout->>Nav: render (style, selectContentType callback)
+    BaseLayout->>Content: render children in View
+
+    Note over BaseLayout,Content: ScrollView → Header → Nav → {children}
