@@ -1,0 +1,13 @@
+sequenceDiagram
+    autonumber
+    participant User
+    participant Nav as ChannelNavigation
+    participant Parent as Parent (e.g. ChannelBaseScreen)
+    participant Content as Tab layout (Home / Videos / Wires / About)
+
+    User->>Nav: tap tab ("Home" | "Videos" | "Wires" | "About")
+    Nav->>Nav: setSelected(tab)
+    Nav->>Parent: selectContentType(selected)
+    Parent->>Parent: setCurrentTab(normalized)
+    Parent->>Content: re-render with active layout as children
+    Content->>User: display tab content
