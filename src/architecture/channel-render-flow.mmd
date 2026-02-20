@@ -1,0 +1,19 @@
+sequenceDiagram
+    autonumber
+    participant App as App (ChannelBaseScreen)
+    participant API as pkgm-api (getChannel, getVideo, getWire)
+    participant ChannelPkg as pkgm-channel
+
+    App->>API: getChannel(channelId)
+    API-->>App: channel metadata, videoIds, wireIds
+
+    App->>API: getVideo(id) for each video
+    API-->>App: video data
+
+    App->>API: getWire(id) for each wire
+    API-->>App: wire data
+
+    App->>ChannelPkg: ChannelHeader + ChannelNavigation + Layout
+    Note right of App: Passes channelLogoUri, channelName, bannerUri, etc.
+    ChannelPkg->>ChannelPkg: ChannelBaseLayout composes Header, Nav, content
+    ChannelPkg-->>App: rendered channel UI
