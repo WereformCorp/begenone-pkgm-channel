@@ -1,0 +1,13 @@
+sequenceDiagram
+    autonumber
+    participant User
+    participant AboutLayout as ChannelAboutLayout
+    participant Linking as React Native Linking
+
+    Note over AboutLayout: Props: content, channelLogoUri, aboutName, aboutSubtitle, socialMediaLink1/2, socialIcon1/2
+
+    AboutLayout->>AboutLayout: normalizeUrl(socialMediaLink1/2)
+
+    User->>AboutLayout: tap social icon (e.g. GitHub)
+    AboutLayout->>Linking: openURL(normalizedUrl)
+    Linking->>User: open browser / external app
